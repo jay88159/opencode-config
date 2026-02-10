@@ -39,7 +39,7 @@
       "model": "google/gemini-3-pro"
     },
     "ultrabrain": {
-      "model": "openai/gpt-5.2-codex",
+      "model": "openai/gpt-5.3-codex",
       "variant": "xhigh"
     },
     "artistry": {
@@ -50,15 +50,56 @@
       "model": "google/gemini-3-flash"
     },
     "unspecified-low": {
-      "model": "openai/gpt-5.2-codex",
+      "model": "openai/gpt-5.3-codex",
       "variant": "medium"
     },
     "unspecified-high": {
-      "model": "openai/gpt-5.2-codex",
+      "model": "openai/gpt-5.3-codex",
       "variant": "medium"
     },
     "writing": {
       "model": "google/gemini-3-flash"
+    },
+    "doc-team": {
+      "model": "deepseek/deepseek-reasoner",
+      "description": "doc-writing Agent Teams 专用 category，所有工人 agent 委派到此 category 以使用 DeepSeek Reasoner"
     }
-  }
+  },
+  "skills": {
+    "doc-writing": {
+      "description": "文档写作编导：协调调研员、撰稿、图表师、审校四个工人 agent 完成文档任务",
+      "model": "anthropic/claude-opus-4-5-20251101"
+    },
+    "doc-researcher": {
+      "description": "文档调研员：Web 搜索、素材采集、引用整理",
+      "subtask": true,
+      "model": "deepseek/deepseek-reasoner"
+    },
+    "doc-writer": {
+      "description": "文档撰稿：正文写作、占位符管理、内容融合",
+      "subtask": true,
+      "model": "deepseek/deepseek-reasoner"
+    },
+    "doc-diagrammer": {
+      "description": "文档图表师：Mermaid 图表、DrawIO 图表生成",
+      "subtask": true,
+      "model": "deepseek/deepseek-reasoner"
+    },
+    "doc-reviewer": {
+      "description": "文档审校：质量检查、段落重写、最终润色",
+      "subtask": true,
+      "model": "deepseek/deepseek-reasoner"
+    },
+    "sources": [
+      {
+        "path": "~/.config/opencode/skills",
+        "recursive": true
+      }
+    ]
+  },
+  "_migrations": [
+    "model-version:openai/gpt-5.2-codex->openai/gpt-5.3-codex",
+    "model-version:openai/gpt-5.2-codex->openai/gpt-5.3-codex",
+    "model-version:openai/gpt-5.2-codex->openai/gpt-5.3-codex"
+  ]
 }

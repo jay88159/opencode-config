@@ -2,7 +2,7 @@
 
 ## 网页搜索
 
-当需要进行网页搜索时，**直接使用 `websearch_cited` 工具**。
+当需要进行网页搜索时，**直接使用 `websearch_web_search_exa` 工具**。
 
 该工具由 `opencode-websearch-cited` 插件提供，会返回带**内联引用**和**来源列表**的搜索结果。
 
