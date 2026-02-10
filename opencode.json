@@ -1,0 +1,114 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "opencode-websearch-cited@1.2.0",
+    "oh-my-opencode@3.1.7",
+    "opencode-gemini-auth@1.3.8"
+  ],
+  "provider": {
+    "openai": {
+      "options": {
+        "websearch_cited": {
+          "model": "gpt-5.2"
+        }
+      }
+    },
+    "anthropic": {
+      "options": {
+        "baseURL": "http://1.95.142.151:3000/v1",
+        "apiKey": "sk-Zme5xnWPggIcUEJ6xskZoLDHUyxwvYnHMwFIVs1C3DlXsa4P"
+      },
+      "models": {
+        "claude-opus-4-5-20251101": {
+          "name": "Claude Opus 4.5 (20251101)"
+        },
+        "claude-sonnet-4-5-20250929": {
+          "name": "Claude Sonnet 4.5 (20250929)"
+        },
+        "claude-sonnet-4-20250514": {
+          "name": "Claude Sonnet 4 (20250514)"
+        },
+        "claude-sonnet-4-5-20250929-thinking": {
+          "name": "Claude Sonnet 4.5 (20250929) Thinking"
+        },
+        "claude-opus-4-20250514": {
+          "name": "Claude Opus 4 (20250514)"
+        },
+        "claude-3-5-sonnet-20241022": {
+          "name": "Claude 3.5 Sonnet"
+        },
+        "claude-3-5-haiku-20241022": {
+          "name": "Claude 3.5 Haiku"
+        }
+      }
+    },
+    "google": {
+      "name": "Google",
+      "models": {
+        "gemini-2.5-flash": {
+          "options": {
+            "thinkingConfig": {
+              "thinkingBudget": 8192,
+              "includeThoughts": true
+            }
+          }
+        },
+        "gemini-2.5-pro": {
+          "options": {
+            "thinkingConfig": {
+              "thinkingBudget": 8192,
+              "includeThoughts": true
+            }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "options": {
+            "thinkingConfig": {
+              "thinkingLevel": "high",
+              "includeThoughts": true
+            }
+          }
+        },
+        "gemini-3-pro-preview": {
+          "options": {
+            "thinkingConfig": {
+              "thinkingLevel": "high",
+              "includeThoughts": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "model": "anthropic/claude-opus-4-5-20251101",
+  "small_model": "anthropic/claude-sonnet-4-5-20250929",
+  "autoupdate": false,
+  "share": "disabled",
+  "mcp": {
+    "brave-search": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@brave/brave-search-mcp-server"
+      ],
+      "enabled": false,
+      "environment": {
+        "BRAVE_API_KEY": "{env:BRAVE_API_KEY}"
+      }
+    },
+    "tavily": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "tavily-mcp"
+      ],
+      "enabled": false,
+      "environment": {
+        "TAVILY_API_KEY": "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",
+        "DEFAULT_PARAMETERS": "{\"max_results\": 3, \"include_answer\": false, \"include_raw_content\": false, \"search_depth\": \"basic\"}"
+      }
+    }
+  }
+}
