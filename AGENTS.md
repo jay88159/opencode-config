@@ -2,18 +2,12 @@
 
 ## 网页搜索
 
-当需要进行网页搜索时，**直接使用 `websearch_web_search_exa` 工具**。
+当需要进行网页搜索时，**直接使用 OpenCode 内置的 `websearch` 工具**。
 
-该工具由 `opencode-websearch-cited` 插件提供，会返回带**内联引用**和**来源列表**的搜索结果。
+> **激活前提**：`websearch` 需要设置环境变量 `OPENCODE_ENABLE_EXA=1`（或使用 OpenCode 官方 provider）。
+> 启动命令：`OPENCODE_ENABLE_EXA=1 opencode`
 
-**示例输出**：
-```
-搜索结果显示 React 19 引入了新的编译器[1]，支持自动记忆化[2]。
-
-Sources:
-[1] React 19 Release Notes (https://react.dev/blog/react-19)
-[2] React Compiler Overview (https://react.dev/learn/react-compiler)
-```
+该工具基于 Exa AI，无需额外 API Key。
 
 ### 使用场景
 

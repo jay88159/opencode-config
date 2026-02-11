@@ -1,10 +1,55 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": [
-    "opencode-websearch-cited@1.2.0",
-    "oh-my-opencode@3.1.7",
-    "opencode-gemini-auth@1.3.8"
-  ],
+  "agent": {
+    "doc-writing": {
+      "description": "文档写作编导：协调 doc-researcher、doc-writer、doc-diagrammer、doc-reviewer 四个 subagent 完成文档写作",
+      "mode": "primary",
+      "model": "gpt-5.2",
+      "prompt": "{file:./skills/doc-writing/SKILL.md}",
+      "permission": {
+        "edit": "deny",
+        "question": "allow"
+      },
+      "color": "#4CAF50"
+    },
+    "doc-researcher": {
+      "description": "文档调研员：Web 搜索（全英文 query）、素材采集、引用整理",
+      "mode": "subagent",
+      "model": "deepseek/deepseek-reasoner",
+      "prompt": "{file:./skills/doc-researcher/SKILL.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
+    },
+    "doc-writer": {
+      "description": "文档撰稿：正文写作、占位符管理、内容融合",
+      "mode": "subagent",
+      "model": "deepseek/deepseek-reasoner",
+      "prompt": "{file:./skills/doc-writer/SKILL.md}",
+      "permission": {
+        "bash": "deny"
+      }
+    },
+    "doc-diagrammer": {
+      "description": "文档图表师：Mermaid 图表、DrawIO 图表生成",
+      "mode": "subagent",
+      "model": "deepseek/deepseek-reasoner",
+      "prompt": "{file:./skills/doc-diagrammer/SKILL.md}",
+      "permission": {
+        "bash": "deny"
+      }
+    },
+    "doc-reviewer": {
+      "description": "文档审校：质量检查、段落重写、最终润色",
+      "mode": "subagent",
+      "model": "deepseek/deepseek-reasoner",
+      "prompt": "{file:./skills/doc-reviewer/SKILL.md}",
+      "permission": {
+        "bash": "deny"
+      }
+    }
+  },
   "provider": {
     "openai": {
       "options": {
@@ -25,23 +70,18 @@
         "claude-sonnet-4-5-20250929": {
           "name": "Claude Sonnet 4.5 (20250929)"
         },
-        "claude-sonnet-4-20250514": {
-          "name": "Claude Sonnet 4 (20250514)"
-        },
         "claude-sonnet-4-5-20250929-thinking": {
           "name": "Claude Sonnet 4.5 (20250929) Thinking"
         },
         "claude-opus-4-20250514": {
           "name": "Claude Opus 4 (20250514)"
         },
-        "claude-3-5-sonnet-20241022": {
-          "name": "Claude 3.5 Sonnet"
-        },
-        "claude-3-5-haiku-20241022": {
-          "name": "Claude 3.5 Haiku"
+        "claude-opus-4-6": {
+          "name": "Claude Opus 4.6"
         }
       }
     },
+    "deepseek": {},
     "google": {
       "name": "Google",
       "models": {
@@ -80,9 +120,9 @@
       }
     }
   },
-  "model": "anthropic/claude-opus-4-5-20251101",
-  "small_model": "anthropic/claude-sonnet-4-5-20250929",
-  "autoupdate": false,
+  "model": "anthropic/claude-opus-4-6",
+  "small_model": "deepseek/deepseek-reasoner",
+  "autoupdate": true,
   "share": "disabled",
   "mcp": {
     "brave-search": {

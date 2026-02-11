@@ -1,11 +1,11 @@
 ---
 name: doc-reviewer
-description: 文档审校：执行最终质量检查、段落重写和修订记录。由 doc-writing 编导通过 delegate_task 调度，依赖 file-writer skill 进行精确编辑。
+description: 文档审校：执行最终质量检查、段落重写和修订记录。由 doc-writing 编导通过 task 工具调度。
 ---
 
 # 文档审校 (Doc Reviewer)
 
-**角色定位**：Agent Teams 中的"审校"，专职负责 Phase 4 最终检查与重写。由编导（`doc-writing`）通过 `delegate_task` 调度。
+**角色定位**：`doc-reviewer` subagent，专职负责 Phase 4 最终检查与重写。由编导（`doc-writing`）通过 task 工具调度。
 
 ## 何时被调度
 
@@ -25,7 +25,7 @@ description: 文档审校：执行最终质量检查、段落重写和修订记�
 
 ### 1. 全量自检
 
-使用检查清单（`../../references/writing-checklist.md`）逐项核对：
+使用检查清单（`../doc-writing/references/writing-checklist.md`）逐项核对：
 
 #### 结构检查
 - 标题层级递进合理（不跳级）

@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
   "agents": {
     "sisyphus": {
-      "model": "anthropic/claude-sonnet-4-5-20250929-thinking",
+      "model": "deepseek/deepseek-reasoner",
       "variant": "medium"
     },
     "oracle": {
@@ -32,69 +32,51 @@
     },
     "atlas": {
       "model": "anthropic/claude-opus-4-5-20251101"
+    },
+    "researcher": {
+      "model": "deepseek/deepseek-reasoner"
+    },
+    "writer": {
+      "model": "deepseek/deepseek-reasoner"
+    },
+    "diagrammer": {
+      "model": "deepseek/deepseek-reasoner"
+    },
+    "reviewer": {
+      "model": "deepseek/deepseek-reasoner"
     }
   },
   "categories": {
     "visual-engineering": {
       "model": "google/gemini-3-pro"
     },
-    "ultrabrain": {
-      "model": "openai/gpt-5.3-codex",
-      "variant": "xhigh"
-    },
-    "artistry": {
-      "model": "google/gemini-3-pro",
-      "variant": "max"
-    },
-    "quick": {
-      "model": "google/gemini-3-flash"
-    },
-    "unspecified-low": {
-      "model": "openai/gpt-5.3-codex",
-      "variant": "medium"
-    },
-    "unspecified-high": {
-      "model": "openai/gpt-5.3-codex",
-      "variant": "medium"
-    },
     "writing": {
-      "model": "google/gemini-3-flash"
-    },
-    "doc-team": {
-      "model": "deepseek/deepseek-reasoner",
-      "description": "doc-writing Agent Teams 专用 category，所有工人 agent 委派到此 category 以使用 DeepSeek Reasoner"
+      "model": "deepseek/deepseek-reasoner"
     }
   },
   "skills": {
     "doc-writing": {
-      "description": "文档写作编导：协调调研员、撰稿、图表师、审校四个工人 agent 完成文档任务",
-      "model": "anthropic/claude-opus-4-5-20251101"
+      "description": "文档写作编导：通过 task 工具按 category='writing' 调度 doc-researcher、doc-writer、doc-diagrammer、doc-reviewer 四个 worker skill",
+      "agent": "sisyphus"
     },
     "doc-researcher": {
-      "description": "文档调研员：Web 搜索、素材采集、引用整理",
-      "subtask": true,
-      "model": "deepseek/deepseek-reasoner"
+      "description": "文档调研员：Web 搜索（全英文 query）、素材采集、引用整理",
+      "subtask": true
     },
     "doc-writer": {
       "description": "文档撰稿：正文写作、占位符管理、内容融合",
-      "subtask": true,
-      "model": "deepseek/deepseek-reasoner"
+      "subtask": true
     },
     "doc-diagrammer": {
       "description": "文档图表师：Mermaid 图表、DrawIO 图表生成",
-      "subtask": true,
-      "model": "deepseek/deepseek-reasoner"
+      "subtask": true
     },
     "doc-reviewer": {
       "description": "文档审校：质量检查、段落重写、最终润色",
-      "subtask": true,
-      "model": "deepseek/deepseek-reasoner"
+      "subtask": true
     },
     "sources": [
-      {
-        "path": "~/.config/opencode/skills",
-        "recursive": true
-      }
+      "~/.config/opencode/skills"
     ]
   },
   "_migrations": [

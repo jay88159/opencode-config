@@ -1,11 +1,11 @@
 ---
 name: doc-writer
-description: 文档撰稿：负责正文写作（含占位符）和 Phase 3 内容融合。由 doc-writing 编导通过 delegate_task 调度，依赖 file-writer skill 进行文件操作。
+description: 文档撰稿：负责正文写作（含占位符）和 Phase 3 内容融合。由 doc-writing 编导通过 task 工具调度。
 ---
 
 # 文档撰稿 (Doc Writer)
 
-**角色定位**：Agent Teams 中的"撰稿人"，专职负责 Phase 2.1 正文写作和 Phase 3 内容融合。由编导（`doc-writing`）通过 `delegate_task` 调度。
+**角色定位**：`doc-writer` subagent，专职负责 Phase 2.1 正文写作和 Phase 3 内容融合。由编导（`doc-writing`）通过 task 工具调度。
 
 ## 何时被调度
 
@@ -40,13 +40,13 @@ description: 文档撰稿：负责正文写作（含占位符）和 Phase 3 内�
 #### 占位符
 - 图占位符：`【FIG-001：图表名称】` + 描述块（类型、包含组件、展示关系、重点标注）
 - 表占位符：`【TBL-001：表格名称】` + 描述块（列定义、预计行数、包含内容）
-- 占位符规范详见：`../../references/placeholder-spec.md`
+- 占位符规范详见：`../doc-writing/references/placeholder-spec.md`
 
 #### 文风
 - 客观克制，多用事实/数据/引用
 - 正式度一致，术语统一
 - 简洁去冗余，避免空转表述
-- 详见：`../../references/style-guide.md`
+- 详见：`../doc-writing/references/style-guide.md`
 
 ### 文件命名
 - PRD：`PRD-<主题>.md`
@@ -64,7 +64,7 @@ description: 文档撰稿：负责正文写作（含占位符）和 Phase 3 内�
 
 1. 逐个替换 `【FIG-xxx】` 占位符，插入图片引用
 2. 逐个替换 `【TBL-xxx】` 占位符，插入 Markdown 表格
-3. 替换模板详见：`../../references/placeholder-spec.md`
+3. 替换模板详见：`../doc-writing/references/placeholder-spec.md`
 
 ### 融合校验（强制）
 
