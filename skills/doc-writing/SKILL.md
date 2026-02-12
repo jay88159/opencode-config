@@ -28,7 +28,7 @@ task(agent='doc-researcher', prompt="...")
 |----------|------|
 | `doc-researcher` | Web 搜索、素材采集、引用整理 |
 | `doc-writer` | 正文写作、占位符管理、内容融合 |
-| `doc-diagrammer` | Mermaid/DrawIO 图表生成 |
+| `doc-diagrammer` | DrawIO 图表生成 |
 | `doc-reviewer` | 质量检查、段落重写、修订记录 |
 
 ## 强制规则（Non-negotiables）

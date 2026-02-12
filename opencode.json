@@ -60,7 +60,7 @@
       }
     },
     "doc-diagrammer": {
-      "description": "文档图表师：Mermaid 图表、DrawIO 图表生成",
+      "description": "文档图表师：DrawIO 图表生成",
       "mode": "subagent",
       "model": "deepseek/deepseek-reasoner",
       "prompt": "{file:./skills/doc-diagrammer/SKILL.md}",
@@ -72,7 +72,6 @@
         "skill": {
           "*": "deny",
           "doc-diagrammer": "allow",
-          "mermaid-diagrams": "allow",
           "draw-io": "allow"
         }
       }
