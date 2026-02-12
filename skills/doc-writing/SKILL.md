@@ -38,8 +38,8 @@ task(agent='doc-researcher', prompt="...")
 3. **不得跳过 Phase 1**：先澄清 → 再检索 → 再大纲确认
 4. **两次确认使用 `question` 工具**：Step 1.1 和 Step 1.3 必须通过 `question` 工具向用户提出结构化问题并等待回复，不要自行跳过
 5. **先检索再大纲**：大纲必须基于调研员的要点与引用
-6. **大纲必须规划"表达形态"**：每章明确段落/分点/表/图的组合（详见 `references/outline-examples.md`）
-7. **占位符必须唯一 ID**：`【FIG-001：...】`、`【TBL-001：...】`（详见 `references/placeholder-spec.md`）
+6. **大纲必须规划"表达形态"**：每章明确段落/分点/表/图的组合（详见`../doc-writer/references/outline-examples.md`）
+7. **占位符必须唯一 ID**：`【FIG-001：...】`、`【TBL-001：...】`（详见 `../doc-writer/references/placeholder-spec.md`）
 8. **task 工具调用格式**：`task(agent='<subagent名称>', prompt="...")`
 9. **禁止编导自己写文件/画图/审校**：这些操作必须通过 task 工具委派给 subagent
 
@@ -94,7 +94,7 @@ task(agent='doc-researcher', prompt="请围绕以下写作方向进行 Web 搜�
 - 每章：标题层级 + 要回答的问题 + "表达形态规划" + FIG/TBL 占位符
 - 涉及列表时先写 3-7 条"分点草案"
 - 产物：大纲 + 图表清单（ID/名称/类型/所属章节）
-- 格式详见 `references/outline-examples.md`
+- 格式详见 `../doc-writer/references/outline-examples.md`
 
 展示完整大纲后，通过 **`question` 工具**确认：
 
@@ -161,13 +161,7 @@ task(agent='doc-reviewer', prompt="请对以下文档执行最终质量检查并
 
 ## 资源索引
 
-- templates:
-  - `templates/prd.md`
-  - `templates/tech-design.md`
-- references:
-  - `references/writing-checklist.md`
-  - `references/outline-examples.md`
-  - `references/placeholder-spec.md`
-  - `references/style-guide.md`
-- examples:
-  - `examples/good-vs-bad-paragraphs.md`
+> 资源文件已分散到各 subagent 目录下，编导无需直接访问。各 subagent 的 SKILL.md 中会引用自己的资源。
+
+- **doc-writer** 拥有：模板、文风指南、占位符规范、大纲示例、段落写作示例
+- **doc-reviewer** 拥有：审校检查清单

@@ -4,11 +4,12 @@
     "doc-writing": {
       "description": "文档写作编导：协调 doc-researcher、doc-writer、doc-diagrammer、doc-reviewer 四个 subagent 完成文档写作",
       "mode": "primary",
-      "model": "gpt-5.2",
+      "model": "openai/gpt-5.2",
       "prompt": "{file:./skills/doc-writing/SKILL.md}",
       "permission": {
         "edit": "deny",
-        "question": "allow"
+        "question": "allow",
+        "read": "allow"
       },
       "color": "#4CAF50"
     },
@@ -19,7 +20,8 @@
       "prompt": "{file:./skills/doc-researcher/SKILL.md}",
       "permission": {
         "edit": "deny",
-        "bash": "deny"
+        "bash": "deny",
+        "read": "allow"
       }
     },
     "doc-writer": {
@@ -28,7 +30,8 @@
       "model": "deepseek/deepseek-reasoner",
       "prompt": "{file:./skills/doc-writer/SKILL.md}",
       "permission": {
-        "bash": "deny"
+        "bash": "deny",
+        "read": "allow"
       }
     },
     "doc-diagrammer": {
@@ -37,7 +40,8 @@
       "model": "deepseek/deepseek-reasoner",
       "prompt": "{file:./skills/doc-diagrammer/SKILL.md}",
       "permission": {
-        "bash": "deny"
+        "bash": "deny",
+        "read": "allow"
       }
     },
     "doc-reviewer": {
@@ -46,7 +50,8 @@
       "model": "deepseek/deepseek-reasoner",
       "prompt": "{file:./skills/doc-reviewer/SKILL.md}",
       "permission": {
-        "bash": "deny"
+        "bash": "deny",
+        "read": "allow"
       }
     }
   },

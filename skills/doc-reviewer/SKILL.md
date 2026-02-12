@@ -25,7 +25,7 @@ description: 文档审校：执行最终质量检查、段落重写和修订记�
 
 ### 1. 全量自检
 
-使用检查清单（`../doc-writing/references/writing-checklist.md`）逐项核对：
+使用检查清单（`references/writing-checklist.md`）逐项核对：
 
 #### 结构检查
 - 标题层级递进合理（不跳级）
