@@ -96,11 +96,16 @@ task(agent='doc-researcher', prompt="请围绕以下写作方向进行 Web 搜�
 - 产物：大纲 + 图表清单（ID/名称/类型/所属章节）
 - 格式详见 `../doc-writer/references/outline-examples.md`
 
-展示完整大纲后，通过 **`question` 工具**确认：
+**流程（必须按此顺序）**：
+
+1. **先输出大纲**：在回复正文中完整展示大纲和图表清单（`question` 工具有长度限制，无法承载大纲内容）
+2. **再调用 `question` 工具**：提出简短的确认问题，等待用户选择
+
+> **约束**：`question` 的 `question` 字段只能放简短确认语，不得把大纲内容塞入其中。
 
 ```json
 {
-  "question": "以上是根据调研结果构建的文档大纲，包含 X 章和 Y 个图表占位符。请确认是否可以开始正文写作？",
+  "question": "以上大纲及图表清单是否可开始正文写作？",
   "options": [
     { "label": "确认，开始写作", "description": "大纲结构合理，进入正文写作阶段" },
     { "label": "需要调整", "description": "章节安排或表达形态需要修改，我会补充意见" }

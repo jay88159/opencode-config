@@ -1,5 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "webfetch": "deny",
+    "websearch": "deny",
+    "external_directory": {
+      "~/Documents/**": "allow"
+    }
+  },
   "agent": {
     "doc-writing": {
       "description": "文档写作编导：协调 doc-researcher、doc-writer、doc-diagrammer、doc-reviewer 四个 subagent 完成文档写作",
@@ -9,7 +16,13 @@
       "permission": {
         "edit": "deny",
         "question": "allow",
-        "read": "allow"
+        "read": "allow",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "skill": {
+          "seo-audit": "allow",
+          "doc-writing": "allow"
+        }
       },
       "color": "#4CAF50"
     },
@@ -21,7 +34,12 @@
       "permission": {
         "edit": "deny",
         "bash": "deny",
-        "read": "allow"
+        "read": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "skill": {
+          "doc-researcher": "allow"
+        }
       }
     },
     "doc-writer": {
@@ -31,7 +49,14 @@
       "prompt": "{file:./skills/doc-writer/SKILL.md}",
       "permission": {
         "bash": "deny",
-        "read": "allow"
+        "read": "allow",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "skill": {
+          "seo-audit": "allow",
+          "doc-writer": "allow",
+          "file-writer": "allow"
+        }
       }
     },
     "doc-diagrammer": {
@@ -40,18 +65,33 @@
       "model": "deepseek/deepseek-reasoner",
       "prompt": "{file:./skills/doc-diagrammer/SKILL.md}",
       "permission": {
-        "bash": "deny",
-        "read": "allow"
+        "bash": "allow",
+        "read": "allow",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "skill": {
+          "*": "deny",
+          "doc-diagrammer": "allow",
+          "mermaid-diagrams": "allow",
+          "draw-io": "allow"
+        }
       }
     },
     "doc-reviewer": {
       "description": "文档审校：质量检查、段落重写、最终润色",
       "mode": "subagent",
       "model": "deepseek/deepseek-reasoner",
-      "prompt": "{file:./skills/doc-reviewer/SKILL.md}",
+      "prompt": "{file:./skills/doc-reviewer/SKILL.md}\n\n---\n\n## 审校检查清单\n\n{file:./skills/doc-reviewer/references/writing-checklist.md}",
       "permission": {
         "bash": "deny",
-        "read": "allow"
+        "read": "allow",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "skill": {
+          "seo-audit": "allow",
+          "file-writer": "allow",
+          "doc-reviewer": "allow"
+        }
       }
     }
   },
