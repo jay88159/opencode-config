@@ -11,7 +11,7 @@
     "doc-writing": {
       "description": "文档写作编导：协调 doc-researcher、doc-writer、doc-diagrammer、doc-reviewer 四个 subagent 完成文档写作",
       "mode": "primary",
-      "model": "minimax-cn/MiniMax-M2.5",
+      "model": "moonshot/kimi-k2.5",
       "prompt": "{file:./skills/doc-writing/SKILL.md}",
       "permission": {
         "edit": "deny",
@@ -29,7 +29,7 @@
     "doc-researcher": {
       "description": "文档调研员：Web 搜索（全英文 query）、素材采集、引用整理",
       "mode": "subagent",
-      "model": "minimax-cn/MiniMax-M2.5",
+      "model": "moonshot/kimi-k2.5",
       "prompt": "{file:./skills/doc-researcher/SKILL.md}",
       "permission": {
         "edit": "deny",
@@ -45,7 +45,7 @@
     "doc-writer": {
       "description": "文档撰稿：正文写作、占位符管理、内容融合",
       "mode": "subagent",
-      "model": "minimax-cn/MiniMax-M2.5",
+      "model": "moonshot/kimi-k2.5",
       "prompt": "{file:./skills/doc-writer/SKILL.md}",
       "permission": {
         "bash": "deny",
@@ -62,7 +62,7 @@
     "doc-diagrammer": {
       "description": "文档图表师：DrawIO 图表生成",
       "mode": "subagent",
-      "model": "minimax-cn/MiniMax-M2.5",
+      "model": "moonshot/kimi-k2.5",
       "prompt": "{file:./skills/doc-diagrammer/SKILL.md}",
       "permission": {
         "bash": "allow",
@@ -79,7 +79,7 @@
     "doc-reviewer": {
       "description": "文档审校：质量检查、段落重写、最终润色",
       "mode": "subagent",
-      "model": "minimax-cn/MiniMax-M2.5",
+      "model": "moonshot/kimi-k2.5",
       "prompt": "{file:./skills/doc-reviewer/SKILL.md}\n\n---\n\n## 审校检查清单\n\n{file:./skills/doc-reviewer/references/writing-checklist.md}",
       "permission": {
         "bash": "deny",
@@ -92,97 +92,140 @@
           "doc-reviewer": "allow"
         }
       }
+    },
+    "explore": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "librarian": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "oracle": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "prometheus": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "metis": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "momus": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "hephaestus": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "atlas": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "sisyphus": {
+      "model": "moonshot/kimi-k2.5"
+    },
+    "multimodal-looker": {
+      "model": "moonshot/kimi-k2.5"
     }
   },
   "provider": {
-    "openai": {
+    "anthropic": {
+      "npm": "@ai-sdk/openai-compatible",
       "options": {
-        "websearch_cited": {
-          "model": "gpt-5.2"
+        "baseURL": "https://api.moonshot.cn/v1",
+        "apiKey": "sk-9Hce3fgQNSaoskSffR24C3eTSUU6zQhtp2OG4TnTsbtinJMp"
+      },
+      "models": {
+        "claude-opus-4-5": {
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via anthropic alias)"
+        },
+        "claude-sonnet-4-5": {
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via anthropic alias)"
+        },
+        "claude-opus-4-6": {
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via anthropic alias)"
+        },
+        "claude-haiku-4-5": {
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via anthropic alias)"
         }
+      }
+    },
+    "openai": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.moonshot.cn/v1",
+        "apiKey": "sk-9Hce3fgQNSaoskSffR24C3eTSUU6zQhtp2OG4TnTsbtinJMp"
       },
       "models": {
         "gpt-5.2": {
-          "options": {
-            "reasoningEffort": "low"
-          }
-        }
-      }
-    },
-    "anthropic": {
-      "options": {
-        "baseURL": "http://1.95.142.151:3000/v1",
-        "apiKey": "sk-Zme5xnWPggIcUEJ6xskZoLDHUyxwvYnHMwFIVs1C3DlXsa4P"
-      },
-      "models": {
-        "claude-opus-4-5-20251101": {
-          "name": "Claude Opus 4.5 (20251101)"
+          "id": "kimi-k2.5",
+          "name": "Kimi-K2.5 (via openai alias)"
         },
-        "claude-sonnet-4-5-20250929": {
-          "name": "Claude Sonnet 4.5 (20250929)"
+        "gpt-5.2-codex": {
+          "id": "kimi-k2.5",
+          "name": "Kimi-K2.5 (via openai alias)"
         },
-        "claude-sonnet-4-5-20250929-thinking": {
-          "name": "Claude Sonnet 4.5 (20250929) Thinking"
-        },
-        "claude-opus-4-20250514": {
-          "name": "Claude Opus 4 (20250514)"
-        },
-        "claude-opus-4-6": {
-          "name": "Claude Opus 4.6"
-        }
-      }
-    },
-    "minimax-cn": {
-      "npm": "@ai-sdk/anthropic",
-      "options": {
-        "baseURL": "https://api.minimaxi.com/anthropic/v1"
-      },
-      "models": {
-        "MiniMax-M2.5": {
-          "name": "MiniMax-M2.5"
+        "gpt-5.3-codex": {
+          "id": "kimi-k2.5",
+          "name": "Kimi-K2.5 (via openai alias)"
         }
       }
     },
     "google": {
-      "name": "Google",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.moonshot.cn/v1",
+        "apiKey": "sk-9Hce3fgQNSaoskSffR24C3eTSUU6zQhtp2OG4TnTsbtinJMp"
+      },
       "models": {
-        "gemini-2.5-flash": {
-          "options": {
-            "thinkingConfig": {
-              "thinkingBudget": 8192,
-              "includeThoughts": true
-            }
-          }
-        },
-        "gemini-2.5-pro": {
-          "options": {
-            "thinkingConfig": {
-              "thinkingBudget": 8192,
-              "includeThoughts": true
-            }
-          }
+        "gemini-3-flash": {
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via google alias)"
         },
         "gemini-3-flash-preview": {
-          "options": {
-            "thinkingConfig": {
-              "thinkingLevel": "high",
-              "includeThoughts": true
-            }
-          }
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via google alias)"
+        },
+        "gemini-3-pro": {
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via google alias)"
         },
         "gemini-3-pro-preview": {
-          "options": {
-            "thinkingConfig": {
-              "thinkingLevel": "high",
-              "includeThoughts": true
-            }
-          }
+          "id": "kimi-k2.5",
+          "name": "kimi-k2.5 (via google alias)"
+        }
+      }
+    },
+    "minimax-cn": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.moonshot.cn/v1",
+        "apiKey": "sk-9Hce3fgQNSaoskSffR24C3eTSUU6zQhtp2OG4TnTsbtinJMp"
+      },
+      "models": {
+        "kimi-k2.5": {
+          "name": "kimi-k2.5"
+        }
+      }
+    },
+    "moonshot": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.moonshot.cn/v1",
+        "apiKey": "sk-9Hce3fgQNSaoskSffR24C3eTSUU6zQhtp2OG4TnTsbtinJMp"
+      },
+      "models": {
+        "kimi-k2.5": {
+          "name": "kimi-k2.5"
+        },
+        "kimi-k2-thinking": {
+          "name": "kimi-k2-thinking"
         }
       }
     }
   },
-  "model": "anthropic/claude-opus-4-6",
-  "small_model": "minimax-cn/MiniMax-M2.5",
+  "model": "moonshot/kimi-k2.5",
+  "small_model": "moonshot/kimi-k2.5",
   "autoupdate": true,
   "share": "disabled",
   "mcp": {
@@ -211,5 +254,8 @@
         "DEFAULT_PARAMETERS": "{\"max_results\": 3, \"include_answer\": false, \"include_raw_content\": false, \"search_depth\": \"basic\"}"
       }
     }
-  }
+  },
+  "plugin": [
+    "oh-my-openagent@latest"
+  ]
 }

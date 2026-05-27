@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "hephaestus": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "oracle": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "librarian": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "explore": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "multimodal-looker": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "prometheus": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "metis": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "momus": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "atlas": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "sisyphus": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "researcher": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "writer": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "diagrammer": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "reviewer": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "build": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "plan": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "OpenCode-Builder": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "ultrabrain": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "deep": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "quick": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "unspecified-low": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "unspecified-high": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    },
+    "writing": {
+      "model": "minimax-cn/MiniMax-M2.5"
+    }
+  },
+  "skills": {
+    "doc-writing": {
+      "description": "文档写作编导：通过 task 工具按 category='writing' 调度 doc-researcher、doc-writer、doc-diagrammer、doc-reviewer 四个 worker skill",
+      "agent": "sisyphus"
+    },
+    "doc-researcher": {
+      "description": "文档调研员：Web 搜索（全英文 query）、素材采集、引用整理",
+      "subtask": true
+    },
+    "doc-writer": {
+      "description": "文档撰稿：正文写作、占位符管理、内容融合",
+      "subtask": true
+    },
+    "doc-diagrammer": {
+      "description": "文档图表师：Mermaid 图表、DrawIO 图表生成",
+      "subtask": true
+    },
+    "doc-reviewer": {
+      "description": "文档审校：质量检查、段落重写、最终润色",
+      "subtask": true
+    },
+    "sources": [
+      "~/.config/opencode/skills"
+    ]
+  },
+  "_migrations": [
+    "model-version:openai/gpt-5.2-codex->openai/gpt-5.3-codex",
+    "model-version:openai/gpt-5.2-codex->openai/gpt-5.3-codex",
+    "model-version:openai/gpt-5.2-codex->openai/gpt-5.3-codex"
+  ]
+}
